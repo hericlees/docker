@@ -28,4 +28,33 @@ docker run -it ubuntu bash
 docker run ubuntu sleep 1d
 
 
-#
+# o Docker irá parar o contêiner com qualquer processo que estiver em execução dentro do contêiner e o contêiner será encerrado. Reseta toda a nossa árvore de processos 
+permanentemente (usar com cuidado, dê preferência ao pause)
+
+docker stop 9159610d06ec
+
+
+# Utilizado para iniciar um contêiner Docker que está parado
+
+docker start 9159610d06ec
+
+
+# Pausa o contêiner (não perde a árvore de processos)
+
+docker pause 9159610d06ec
+
+
+# Despausa o conteiner
+                  PID ou Nome do Container
+docker unpause 9159610d06ec
+
+
+# Para uma parada instantânea. (por padrão, o container espera 10 segundos para encerrar de maneira adequada)
+
+docker stop -t=0 9159610d06ec 
+
+
+# Removendo um contaibner
+
+docker rm 9159610d06ec
+
