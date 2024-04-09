@@ -28,7 +28,7 @@ docker run -it ubuntu bash
 docker run ubuntu sleep 1d
 
 
-# o Docker irá parar o contêiner com qualquer processo que estiver em execução dentro do contêiner e o contêiner será encerrado. Reseta toda a nossa árvore de processos 
+# O Docker irá parar o contêiner com qualquer processo que estiver em execução dentro do contêiner e o contêiner será encerrado. Reseta toda a nossa árvore de processos 
 permanentemente (usar com cuidado, dê preferência ao pause)
 
 docker stop 9159610d06ec
@@ -58,3 +58,26 @@ docker stop -t=0 9159610d06ec
 
 docker rm 9159610d06ec
 
+
+# O Docker cria e executa um novo contêiner e não trava o terminal
+
+docker run -d dockersamples/static-site
+
+
+#  O Docker cria e executa um novo contêiner baseado na imagem dockersamples/static-site. Este contêiner será executado em segundo plano e todas as portas expostas pelo 
+contêiner serão mapeadas automaticamente para portas aleatórias no host.
+
+docker run -d -P dockersamples/static-site
+
+
+# Usado para visualizar as portas mapeadas do contêiner para o host
+
+docker port b0e93e405db6
+
+http://localhost:49154 (porta informada pelo Docker)
+
+# Isso permite acessar o site estático contido na imagem através da porta 8080 do host.
+
+docker run -d -p 8080:80 dockersamples/static-site 
+
+http://localhost:8080
