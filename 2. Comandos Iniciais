@@ -1,0 +1,11 @@
+# Acessa o Docker Hub, adquire a imagem ubuntu inicia o container (inserir argumento para continuar com o container rodando)
+
+docker run ubuntu
+
+
+# Apenas baixa a imagem 
+
+docker pull ubuntu
+
+
+# 
