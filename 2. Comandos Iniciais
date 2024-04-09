@@ -8,4 +8,24 @@ docker run ubuntu
 docker pull ubuntu
 
 
-# 
+# Mostra quais containers estão em execução no momento
+
+docker ps / docker container ls
+
+
+# Usado para listar todos os contêineres Docker, incluindo os que estão parados (ou seja, que não estão em execução) junto com os contêineres em execução
+
+docker ps -a / docker container ls -a
+
+
+# Um contêiner é criado e o shell bash é iniciado dentro dele. O contêiner continuará em execução até que você explicitamente o pare ou saia do shell bash
+
+docker run -it ubuntu bash
+
+
+# Criado a partir da imagem do Ubuntu e é configurado para "dormir" por um dia. Após um dia, o contêiner será encerrado automaticamente
+
+docker run ubuntu sleep 1d
+
+
+#
