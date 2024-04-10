@@ -51,3 +51,12 @@ docker build -t danielartine/app-node:1 .
 # Para alterar a porta. Ex.: 3000 para 8081
 
 docker run -d –p 8081:3000 danielartine/app-node:1.0
+
+# Para expor a porta, só adcionar o expose e o nº da porta
+
+FROM node:14
+WORKDIR /app-node
+EXPOSE 3000
+COPY . .
+RUN npm install
+ENTRYPOINT npm start
