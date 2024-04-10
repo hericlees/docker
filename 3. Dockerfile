@@ -1,0 +1,46 @@
+FROM node:14
+WORKDIR /app-node
+COPY . .
+RUN npm install
+ENTRYPOINT npm start
+
+
+Esse é um **Dockerfile**, que é um arquivo usado para **criar imagens de contêineres** no Docker. Vamos analisar cada instrução:
+
+1. **`FROM node:14`**:
+    - Essa instrução define a **imagem base** para o contêiner. Neste caso, estamos usando a imagem oficial do **Node.js** na versão **14**.
+    - O contêiner será construído com base nessa imagem, que já inclui o Node.js e outras dependências.
+
+2. **`WORKDIR /app-node`**:
+    - Essa instrução define o **diretório de trabalho** dentro do contêiner.
+    - Todos os comandos subsequentes serão executados a partir desse diretório.
+    - No caso, estamos definindo o diretório como `/app-node`.
+
+3. **`COPY . .`**:
+    - Essa instrução copia os arquivos do **diretório atual** (onde o Dockerfile está localizado) para o diretório de trabalho dentro do contêiner.
+    - O primeiro ponto (`.`) refere-se ao **diretório de origem** (atual), e o segundo ponto (`.`) refere-se ao **diretório de destino** (diretório de trabalho).
+
+4. **`RUN npm install`**:
+    - Essa instrução executa o comando `npm install` dentro do contêiner.
+    - Ela instala as **dependências do aplicativo Node.js** especificadas no arquivo `package.json`.
+    - Isso é importante para garantir que todas as bibliotecas necessárias estejam disponíveis no contêiner.
+
+5. **`ENTRYPOINT npm start`**:
+    - Essa instrução define o **comando de entrada** para o contêiner.
+    - Quando o contêiner é iniciado, ele executará o comando `npm start`.
+    - Isso geralmente é usado para iniciar o servidor ou aplicativo dentro do contêiner.
+
+Em resumo, esse Dockerfile cria um contêiner baseado na imagem do Node.js 14, copia os arquivos do diretório atual para o diretório de trabalho no contêiner, instala as dependências e, ao iniciar o contêiner, executa o comando `npm start` para iniciar o aplicativo Node.js. 🐳🚀
+
+Origem: conversa com o Bing, 10/04/2024
+(1) Dockerizing a Node.js App: A Comprehensive Guide for Easy Deployment. https://dev.to/burakboduroglu/dockerizing-a-nodejs-app-a-comprehensive-guide-for-easy-deployment-13o1.
+(2) [Dúvida] Erro na execução do container node | Fórum Alura. https://cursos.alura.com.br/forum/topico-duvida-erro-na-execucao-do-container-node-282268.
+(3) Crafting multi-stage builds with Docker in Node.js - DEV Community. https://www.cloudnweb.dev/2019/10/crafting-multi-stage-builds-with-docker-in-node-js/.
+(4) Copy output of npm install to docker container - Stack Overflow. https://stackoverflow.com/questions/63225434/copy-output-of-npm-install-to-docker-container.
+(5) What is the point of WORKDIR on Dockerfile? - Stack Overflow. https://stackoverflow.com/questions/51066146/what-is-the-point-of-workdir-on-dockerfile.
+(6) How To Build a Node.js Application with Docker | DigitalOcean. https://www.digitalocean.com/community/tutorials/how-to-build-a-node-js-application-with-docker.
+
+# Para criar um nome, ou seja, etiquetar a nossa imagem
+
+docker build -t danielartine/app-node:1 .
+
