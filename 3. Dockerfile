@@ -40,7 +40,12 @@ Origem: conversa com o Bing, 10/04/2024
 (5) What is the point of WORKDIR on Dockerfile? - Stack Overflow. https://stackoverflow.com/questions/51066146/what-is-the-point-of-workdir-on-dockerfile.
 (6) How To Build a Node.js Application with Docker | DigitalOcean. https://www.digitalocean.com/community/tutorials/how-to-build-a-node-js-application-with-docker.
 
+
 # Para criar um nome, ou seja, etiquetar a nossa imagem
 
 docker build -t danielartine/app-node:1 .
 
+
+# Para alterar a porta. Ex.: 3000 para 8081
+
+docker run -d –p 8081:3000 danielartine/app-node:1.0
