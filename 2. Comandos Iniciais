@@ -76,8 +76,17 @@ docker port b0e93e405db6
 
 http://localhost:49154 (porta informada pelo Docker)
 
+
 # Isso permite acessar o site estático contido na imagem através da porta 8080 do host.
 
 docker run -d -p 8080:80 dockersamples/static-site 
 
 http://localhost:8080
+
+
+# Parar todos os containers em execução
+
+docker stop $(docker container ls -q)
+
+
+
