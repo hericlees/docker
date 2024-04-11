@@ -60,3 +60,49 @@ EXPOSE 3000
 COPY . .
 RUN npm install
 ENTRYPOINT npm start
+
+
+# Criando a conta no Docker Hub
+
+Primeiro, é necessário que você crie uma conta na parte direita da home do Docker Hub. Insira seu nome de usuário, e-mail, senha, aceite os termos e marque a opção recaptcha. 
+Depois, clique em "Sign up" e confirme sua conta por e-mail.
+
+
+# Autenticando a conta do Docker Hub
+
+Precisamos voltar ao nosso terminal e autenticar a nossa conta no Command Line Interface (Interface de Linha de Comando) do Docker, para que ele saiba que somos.
+
+Para isso, usamos o comando 
+
+docker login -u nomedousuário
+
+Ao pressionar "Enter", será solicitada a senha (password) que usou durante o cadastro no Docker Hub. Por questões de segurança, o número de caracteres não aparecerá, mas estará sendo digitado.
+
+
+# Subindo a imagem para o Docker Hub
+
+docker push nomedousuario/imagemcriada:1.0
+
+O comando `docker push` é usado para **enviar** (ou **empurrar**) **imagens Docker** para um **repositório**. Vamos entender o que cada parte desse comando significa:
+
+1. **`docker`**: Refere-se ao utilitário de linha de comando do Docker.
+2. **`push`**: É o subcomando que indica que queremos enviar uma imagem para um repositório.
+3. **`nomedousuario/imagemcriada:1.0`**: É a **tag** da imagem que estamos enviando. Vamos quebrar isso em partes:
+    - **`nomedousuario`**: É o nome do **repositório** (ou **registry**). Pode ser um registro público como o Docker Hub ou um registro privado.
+    - **`imagemcriada`**: É o nome da **imagem** que estamos enviando.
+    - **`:1.0`**: É a **tag** específica dessa imagem. Neste caso, estamos enviando a versão `1.0`.
+
+Aqui está o fluxo geral do que acontece quando você executa `docker push`:
+
+1. Você **constrói** uma imagem Docker localmente (por exemplo, usando `docker build`).
+2. Essa imagem é **marcada** com uma **tag** específica (como `1.0`).
+3. Você executa `docker push` para enviar essa imagem para um **repositório** (como o Docker Hub).
+4. O Docker envia a imagem para o repositório especificado, tornando-a disponível para outras pessoas ou máquinas.
+
+Em resumo, o comando `docker push` é usado para **distribuir** suas imagens Docker para que outros possam usá-las ou implantá-las em seus próprios ambientes. É uma parte fundamental do ciclo de vida de desenvolvimento e implantação de contêineres. 🐳🚀
+
+Origem: conversa com o Bing, 11/04/2024
+(1) Docker: How to authenticate for docker push? - Stack Overflow. https://stackoverflow.com/questions/34434231/docker-how-to-authenticate-for-docker-push.
+(2) Building and Dockerizing a Node.js | by Liliane Konissi | Medium. https://medium.com/@lilnya79/building-and-dockerizing-a-node-js-app-from-scratch-and-pushing-it-to-docker-hub-201451967720.
+(3) How To Build a Node.js Application with Docker | DigitalOcean. https://www.digitalocean.com/community/tutorials/how-to-build-a-node-js-application-with-docker.
+(4) undefined. https://docs.docker.com/mac/step_six/.
