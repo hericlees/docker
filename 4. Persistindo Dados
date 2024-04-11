@@ -1,1 +1,38 @@
+# Criando um bind mount. criar uma nova pasta chamada volume-docker (você pode dar outro nome)
 
+mkdir volume-docker
+
+
+# Monta um volume do sistema de arquivos do seu host para dentro do contêiner
+
+docker run -it -v /home/daniel/volume-docker:/app ubuntu bash
+
+or
+
+docker run -it --mount type=bind,source=/home/daniel/volume-docker,target=/app ubuntu bash
+
+
+# Monta um volume gerenciada pelo Docker dentro do sistema de arquivos (recomendado). Criando um volume
+
+docker volume create meu-volume
+
+
+# Montar um volume Docker
+
+docker run -it -v meu-volume:/app ubuntu bash
+
+
+# Gerenciamento do volume
+
+docker volume
+
+create para criar volumes;
+inspect para inspecioná-los;
+ls para listá-los;
+prune para remover os volumes que não estão sendo usados;
+rm para remover qualquer volume, sendo usado ou não.
+
+
+# Criando volume com --mount
+
+docker run -it --mount source=meu-volume,target=/app ubuntu bash
