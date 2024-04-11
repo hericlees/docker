@@ -36,3 +36,13 @@ rm para remover qualquer volume, sendo usado ou não.
 # Criando volume com --mount
 
 docker run -it --mount source=meu-volume,target=/app ubuntu bash
+
+
+# Criando um tmpfs (temporários)
+
+docker run -it --tmpfs=/app ubuntu bash
+
+
+# Criando um tmpfs com --mount
+
+docker run -it --mount type=tmpfs,destination=/app ubuntu bash
