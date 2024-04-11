@@ -34,7 +34,7 @@ Esse é um **Dockerfile**, que é um arquivo usado para **criar imagens de cont�
 
 Em resumo, esse Dockerfile cria um contêiner baseado na imagem do Node.js 14, copia os arquivos do diretório atual para o diretório de trabalho no contêiner, instala as dependências e, ao iniciar o contêiner, executa o comando `npm start` para iniciar o aplicativo Node.js. 🐳🚀
 
-Origem: conversa com o Bing, 10/04/2024
+Origem: 
 (1) Dockerizing a Node.js App: A Comprehensive Guide for Easy Deployment. https://dev.to/burakboduroglu/dockerizing-a-nodejs-app-a-comprehensive-guide-for-easy-deployment-13o1.
 (2) [Dúvida] Erro na execução do container node | Fórum Alura. https://cursos.alura.com.br/forum/topico-duvida-erro-na-execucao-do-container-node-282268.
 (3) Crafting multi-stage builds with Docker in Node.js - DEV Community. https://www.cloudnweb.dev/2019/10/crafting-multi-stage-builds-with-docker-in-node-js/.
