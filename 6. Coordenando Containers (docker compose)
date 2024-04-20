@@ -1,1 +1,77 @@
+# Instalação docker compose
 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+
+# Tornar o Docker Compose executável
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+
+# Definindo os serviços
+
+# Primeiramente, abriremos um novo terminal e criar uma nova pasta na área de trabalho chamada ymls, para isso passamos o comando
+
+mkdin Desktop/ymls
+
+# Dentro dela, acessaremos cd Desktop/ymls
+
+# Abriremos o VS Code na pasta, para isso passamos
+
+code .
+
+#  Criando um arquivo docker-compose
+
+version: "3.9"
+services:
+  mongodb:
+    image: mongo:4.4.6
+    container_name: meu-mongo
+    networks:
+      - compose-bridge
+
+
+  alurabooks:
+    image: aluradocker/alura-books:1.0
+    container_name: alurabooks
+    networks:
+      - compose-bridge
+    ports:
+      - 3000:3000
+
+
+
+
+version: "3.9": Isso especifica a versão da sintaxe do arquivo de composição do Docker. No caso, estamos usando a versão 3.9.
+
+services:: Aqui começamos a definir os serviços que serão executados em contêineres.
+
+mongodb:: Este é o nome do serviço que estamos criando. Ele será executado em um contêiner.
+
+image: mongo:4.4.6: Especifica a imagem do MongoDB que será usada para criar o contêiner. Neste caso, estamos usando a imagem “mongo” com a versão 4.4.6.
+
+container_name: meu-mongo: Define o nome do contêiner que será criado. Neste caso, o nome do contêiner será “meu-mongo”.
+
+networks:: Aqui podemos definir redes personalizadas para conectar contêineres. No exemplo, estamos usando a rede “compose-bridge”.
+
+
+Em resumo, esse trecho de código está criando um serviço chamado “mongodb” que será executado em um contêiner com a imagem do MongoDB na versão 4.4.6 e
+conectado à rede “compose-bridge”. O contêiner terá o nome “meu-mongo”
+
+
+
+
+alurabooks:: Este é o nome do serviço que estamos criando. Ele será executado em um contêiner.
+
+image: aluradocker/alura-books:1.0: Especifica a imagem do serviço “alurabooks” que será usada para criar o contêiner. 
+Neste caso, estamos usando a imagem “aluradocker/alura-books” com a versão 1.0.
+
+container_name: alurabooks: Define o nome do contêiner que será criado. Neste caso, o nome do contêiner será “alurabooks”.
+
+networks:: Aqui estamos conectando o contêiner à rede “compose-bridge”.
+
+ports:: Define a mapeamento de portas entre o host e o contêiner. No exemplo, estamos mapeando a porta 3000 do host para a porta 3000 do contêiner.
+
+
+Em resumo, esse trecho de código está criando um serviço chamado “alurabooks” que será executado em um contêiner com a imagem “aluradocker/alura-books” na versão 1.0. 
+O contêiner terá o nome “alurabooks” e estará conectado à rede “compose-bridge”. A porta 3000 do host será mapeada para a porta 3000 do contêiner
