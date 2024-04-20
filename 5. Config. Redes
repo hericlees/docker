@@ -1,0 +1,47 @@
+# Definindo o nome de um contêiner.
+
+docker run -it --name ubuntu1 ubuntu bash
+
+
+# Criando uma rede bridge
+
+docker run -it --name ubuntu1 --network minha-bridge ubuntu bash
+
+
+# Criando uma rede none
+
+docker run -d --network none ubuntu sleep 1d
+
+
+# Criando uma rede host 
+
+docker run -d --network host ubuntu sleep 1d
+
+
+# Explicação de cada tipo de rede do docker
+
+Bridge (Ponte):
+
+O que é: Rede padrão do Docker.
+
+Como funciona: Cada container tem uma interface de rede virtual conectada a uma rede interna "bridge".
+
+Por que usar: Isola os containers em sua própria sub-rede, permitindo comunicação entre eles na mesma rede "bridge".
+
+
+Host (Anfitrião):
+
+O que é: Container que compartilha o namespace de rede com o host.
+
+Como funciona: O container usa a mesma interface de rede que o host, sem encapsulamento.
+
+Por que usar: Permite que o container acesse a rede do host diretamente, sem a necessidade de mapeamento de porta.
+
+
+None (Nenhuma):
+
+O que é: Container sem conectividade de rede.
+
+Como funciona: O container não possui interface de rede ativa.
+
+Por que usar: Útil para cenários em que o container não precisa de acesso externo, sendo isolado da rede.
