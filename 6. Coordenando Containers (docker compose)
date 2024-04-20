@@ -75,3 +75,39 @@ ports:: Define a mapeamento de portas entre o host e o contêiner. No exemplo, e
 
 Em resumo, esse trecho de código está criando um serviço chamado “alurabooks” que será executado em um contêiner com a imagem “aluradocker/alura-books” na versão 1.0. 
 O contêiner terá o nome “alurabooks” e estará conectado à rede “compose-bridge”. A porta 3000 do host será mapeada para a porta 3000 do contêiner
+
+
+
+
+
+
+# Configurando dependências e otimizando logs
+
+# Uma delas é a depends_on, que expressa dependência entre serviços. Quando definimos uma dependência de um serviço para outro, ele inicia o serviço nessa ordem específica.
+
+ alurabooks:
+    image: aluradocker/alura-books:1.0
+    container_name: alurabooks
+    networks:
+      - compose-bridge
+    ports:
+      - 3000:3000
+    depends_on:
+     - mongodb
+
+# Cria e inicia os contêineres definidos no arquivo docker-compose.yml
+
+docker-compose up
+
+# Inicia os contêineres definidos no arquivo de composição em segundo plano, permitindo que você continue trabalhando no terminal sem ser interrompido pela saída dos contêineres
+
+docker-compose up -d
+
+# Lista os contêineres do docker compose 
+
+docker-compose ps
+
+# Remove todos os containers e a rede criada
+
+docker-compose down
+
